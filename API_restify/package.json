@@ -1,0 +1,25 @@
+{
+  "name": "api_restify_leo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "msql": "^1.0.3",
+    "mssql": "^6.0.1",
+    "nodemon": "^2.0.2",
+    "restify": "^8.5.1",
+    "restify-cors-middleware": "^1.1.1",
+    "restify-jwt-community": "^1.1.2",
+    "restify-router": "^0.5.1"
+  }
+}
