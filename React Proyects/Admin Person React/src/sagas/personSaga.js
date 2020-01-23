@@ -3,54 +3,26 @@ import { personAPI } from "../services";
 
 import {
   GET_PERSON,
-  GET_ONE_PERSON,
   EDIT_PERSON,
-  getPerson,
   ADD_PERSON,
   DEL_PERSON,
-  setOnePerson,
   setPerson
 } from "../actions/personActions";
 
-console.log("entro a la saga!");
 const {
-  personService: {
-    getPersons,
-    postPersons,
-    delPersons,
-    getOnePersons,
-    putPersons
-  }
+  personService: { getPersons, postPersons, delPersons, putPersons }
 } = personAPI;
 
 function* fetchPerson() {
-  console.log("estoy en fetchperson");
   try {
     const { ok, data } = yield call(getPersons);
-    console.log(data);
 
     if (!ok) {
       console.log("error!");
       return;
     }
-    //debugger;
+
     yield putResolve(setPerson(data));
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-function* fetchOnePerson() {
-  try {
-    const { ok, data } = yield call(getOnePersons);
-    console.log(data);
-
-    if (!ok) {
-      console.log("error!");
-      return;
-    }
-    //debugger;
-    yield putResolve(setOnePerson(data));
   } catch (error) {
     console.log(error);
   }
@@ -58,7 +30,7 @@ function* fetchOnePerson() {
 
 function* newPerson({ data }) {
   try {
-    const { ok, data: dataResult } = yield call(postPersons, data);
+    const { ok } = yield call(postPersons, data);
 
     if (!ok) {
       console.log("error en el post!");
@@ -70,7 +42,7 @@ function* newPerson({ data }) {
 
 function* editPerson({ data, id }) {
   try {
-    const { ok, data: dataResult } = yield call(putPersons, data, id);
+    const { ok } = yield call(putPersons, data, id);
 
     if (!ok) {
       console.log("error en el put!");
@@ -81,20 +53,14 @@ function* editPerson({ data, id }) {
 }
 
 function* deletePerson({ id }) {
-  //debugger;
   try {
-    const { ok, data } = yield call(delPersons, id);
+    const { ok } = yield call(delPersons, id);
 
     if (!ok) {
       console.log("error al eliminar");
-      //yield call(alert, "error");
+
       return;
     }
-
-    console.log(ok);
-    console.log(data);
-
-    //yield call(fetchPerson);
   } catch (error) {
     console.log(error);
   }
@@ -105,7 +71,7 @@ function* watcher() {
     yield all([takeLatest(GET_PERSON, fetchPerson)]);
     yield all([takeLatest(ADD_PERSON, newPerson)]);
     yield all([takeLatest(DEL_PERSON, deletePerson)]);
-    yield all([takeLatest(GET_ONE_PERSON, fetchOnePerson)]);
+
     yield all([takeLatest(EDIT_PERSON, editPerson)]);
   } catch (error) {
     console.log("error en el watcher!");

@@ -7,12 +7,19 @@ const {
   setPerson,
   delPerson,
   updatePerson,
-  getOne
+  getOne,
+  delPersonName
 } = require("../services/personas");
 
 //trea todas las personas
 router.get("/todos", async (req, res) => {
-  res.send(200, await getPerson());
+  let data = await getPerson();
+
+  if (data) {
+    res.send(200, data);
+  } else {
+    res.send(500, { error_del_api: "no se pudo traer la data we" });
+  }
 });
 
 //trae una persona mediante su id
@@ -26,8 +33,12 @@ router.post("/add", async (req, res) => {
 });
 
 //elimina una persona mediante su id
-router.get("/del/:id", async (req, res) => {
+router.del("/del/:id", async (req, res) => {
   res.send(200, delPerson(req));
+});
+
+router.del("/delname/:name", async (req, res) => {
+  res.send(200, delPersonName(req));
 });
 
 //actualiza los datos de una persona mediante su id

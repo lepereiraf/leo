@@ -39,15 +39,21 @@ export default function ElevateAppBar(props) {
       <CssBaseline />
       <ElevationScroll {...props}>
         <AppBar>
-          <Toolbar>
+          <Toolbar
+            style={{
+              justifyContent: "center",
+              flexDirection: "row",
+              display: "flex"
+            }}
+          >
             <Typography variant='h5'>Listado de personas</Typography>
             <Link to='/new' style={{ textDecoration: "none" }}>
               <Button
-                style={{ marginLeft: "10px" }}
+                style={{ marginLeft: "80px" }}
                 variant='contained'
                 color='secondary'
               >
-                AÑADIR
+                agregar
               </Button>
             </Link>
           </Toolbar>

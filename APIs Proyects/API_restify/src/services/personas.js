@@ -10,7 +10,7 @@ const getPerson = async () => {
     return result.recordset;
   } catch (error) {
     console.log(error);
-    console.log("error");
+    console.log("error al traer todos");
   }
 };
 
@@ -54,7 +54,6 @@ const setPerson = async (req, res) => {
 const delPerson = async (req, res) => {
   const { id } = req.params;
   console.log("el id es:" + id);
-
   try {
     let conn = await sql.connect(config);
 
@@ -62,6 +61,25 @@ const delPerson = async (req, res) => {
       .request()
       .input("id", id)
       .query(`DELETE FROM persona WHERE id=@id`);
+    sql.close();
+    return { message: "persona eliminada con exito" };
+  } catch (error) {
+    console.log(error);
+    console.log("error en delete");
+  }
+};
+
+const delPersonName = async (req, res) => {
+  const { name } = req.params;
+  console.log("el nombre es:" + name);
+
+  try {
+    let conn = await sql.connect(config);
+
+    let result = await conn
+      .request()
+      .input("name", name)
+      .query(`DELETE FROM persona WHERE name=@name`);
     sql.close();
     return { message: "persona eliminada con exito" };
   } catch (error) {
@@ -89,4 +107,11 @@ const updatePerson = async (req, res) => {
   }
 };
 
-module.exports = { getPerson, setPerson, delPerson, updatePerson, getOne }; //EXPORTAMOS NUESTRAS FUNCIONES
+module.exports = {
+  getPerson,
+  setPerson,
+  delPerson,
+  updatePerson,
+  getOne,
+  delPersonName
+}; //EXPORTAMOS NUESTRAS FUNCIONES

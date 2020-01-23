@@ -3,11 +3,9 @@ import { createActions } from "reduxsauce";
 const { Types, Creators } = createActions(
   {
     getPerson: null,
-    getOnePerson: null,
     setPerson: ["data"],
     addPerson: ["data"],
     delPerson: ["id"],
-    setOnePerson: ["data, id"],
     editPerson: ["data", "id"]
   },
   {
@@ -15,30 +13,12 @@ const { Types, Creators } = createActions(
   }
 );
 
-const {
-  getPerson,
-  setPerson,
-  addPerson,
-  delPerson,
-  editPerson,
-  setOnePerson,
-  getOnePerson
-} = Creators;
+const { getPerson, setPerson, addPerson, delPerson, editPerson } = Creators;
 
-const {
-  GET_PERSON,
-  SET_PERSON,
-  ADD_PERSON,
-  DEL_PERSON,
-  EDIT_PERSON,
-  SET_ONE_PERSON,
-  GET_ONE_PERSON
-} = Types;
+const { GET_PERSON, SET_PERSON, ADD_PERSON, DEL_PERSON, EDIT_PERSON } = Types;
 
 export {
-  getOnePerson,
   editPerson,
-  setOnePerson,
   delPerson,
   setPerson,
   getPerson,
@@ -47,7 +27,5 @@ export {
   SET_PERSON,
   ADD_PERSON,
   DEL_PERSON,
-  SET_ONE_PERSON,
-  EDIT_PERSON,
-  GET_ONE_PERSON
+  EDIT_PERSON
 };
