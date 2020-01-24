@@ -43,11 +43,10 @@ const useStyles = makeStyles(theme => ({
 export default function SimpleModal({ id, name: nombre, surname: apellido }) {
   const classes = useStyles();
 
-  // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 
-  const [persona, setPersona] = useState({ name: nombre, surname: apellido });
+  const [persona, setPersona] = useState({ name: "", surname: "" });
 
   const { onEditPerson } = useActions({
     onEditPerson: editPerson
@@ -70,11 +69,17 @@ export default function SimpleModal({ id, name: nombre, surname: apellido }) {
 
   const onSubmit = () => {
     const data = persona;
-    onEditPerson(id, data);
-    setTimeout(() => {
-      handleGetPerson();
-    }, 500);
-    handleClose();
+    if (data.name === "" || data.surname === "") {
+      alert("debe completar ambos campos!");
+      return;
+    } else {
+      onEditPerson(id, data);
+      setPersona({ name: "", surname: "" });
+      setTimeout(() => {
+        handleGetPerson();
+      }, 500);
+      handleClose();
+    }
   };
   const handleOpen = () => {
     setOpen(true);

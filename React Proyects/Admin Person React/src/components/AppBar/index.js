@@ -38,7 +38,7 @@ export default function ElevateAppBar(props) {
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll {...props}>
-        <AppBar>
+        <AppBar style={{ backgroundColor: "#2979ff" }}>
           <Toolbar
             style={{
               justifyContent: "center",
@@ -50,8 +50,8 @@ export default function ElevateAppBar(props) {
             <Link to='/new' style={{ textDecoration: "none" }}>
               <Button
                 style={{ marginLeft: "80px" }}
-                variant='contained'
                 color='secondary'
+                variant='contained'
               >
                 agregar
               </Button>

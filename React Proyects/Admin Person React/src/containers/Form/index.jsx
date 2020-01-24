@@ -29,8 +29,12 @@ const Form = () => {
 
   const onSubmit = () => {
     const data = persona;
-    onAddPerson(data);
-    setPersona({ name: "", surname: "" });
+    if (data.name === "" || data.surname === "") {
+      alert("Debe completar ambos campos!");
+    } else {
+      onAddPerson(data);
+      setPersona({ name: "", surname: "" });
+    }
   };
 
   return (
