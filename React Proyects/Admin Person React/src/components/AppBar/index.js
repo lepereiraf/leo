@@ -38,7 +38,7 @@ export default function ElevateAppBar(props) {
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll {...props}>
-        <AppBar style={{ backgroundColor: "#2979ff" }}>
+        <AppBar style={{ backgroundColor: "#009688" }}>
           <Toolbar
             style={{
               justifyContent: "center",
