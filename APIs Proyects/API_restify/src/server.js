@@ -10,6 +10,7 @@ require("dotenv").config();
 //importando rutas
 const adminRoutes = require("./routes/admin");
 const personRoutes = require("./routes/persona");
+const poroductRoutes = require("./routes/productos");
 
 //configuracion del servidor
 const miServer = restify.createServer();
@@ -58,6 +59,7 @@ miServer.use((req, res, next) => {
 
 router.add("/admin", adminRoutes);
 router.add("/person", personRoutes);
+router.add("/products", poroductRoutes);
 router.applyRoutes(miServer);
 
 miServer.listen(3011, function() {
