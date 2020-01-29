@@ -1,5 +1,10 @@
 import React, { useCallback } from "react";
-import { Container, Typography, Grid } from "@material-ui/core";
+import {
+  Container,
+  Typography,
+  Grid,
+  CircularProgress
+} from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import AppBar from "../../components/AppBar";
 
@@ -28,6 +33,8 @@ const Home = () => {
       return productos.map((value, index) => (
         <Producto key={index} {...value} />
       ));
+    } else {
+      return <CircularProgress />;
     }
   };
 
