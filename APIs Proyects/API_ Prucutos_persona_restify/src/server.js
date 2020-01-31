@@ -12,6 +12,7 @@ const adminRoutes = require("./routes/admin");
 const personRoutes = require("./routes/persona");
 const poroductRoutes = require("./routes/productos");
 const moviesRoutes = require("./routes/peliculas");
+const appsRoutes = require("./routes/aplicaciones");
 
 //configuracion del servidor
 const miServer = restify.createServer();
@@ -62,6 +63,7 @@ router.add("/admin", adminRoutes);
 router.add("/person", personRoutes);
 router.add("/products", poroductRoutes);
 router.add("/movies", moviesRoutes);
+router.add("/apps", appsRoutes);
 
 router.applyRoutes(miServer);
 
