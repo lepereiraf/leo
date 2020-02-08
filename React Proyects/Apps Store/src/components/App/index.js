@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Typography, Grid, Button } from "@material-ui/core";
+import ModalDetail from "../modalDetail";
 
 const MyApp = ({ name, description, category, version, img, link }) => {
   return (
@@ -37,6 +38,7 @@ const MyApp = ({ name, description, category, version, img, link }) => {
               DESCARGAR
             </Button>
           </a>
+          <ModalDetail />
         </Grid>
       </Grid>
     </Card>
