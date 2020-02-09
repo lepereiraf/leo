@@ -1,0 +1,15 @@
+SHA256:itwW6xwHLFYmmysXnea88PXRAFby4g7C4B65J6Vl0Ak ext_lepereir@mercadolibre.com
+
+
+The key's randomart image is:
++---[RSA 4096]----+
+|  E     . .      |
+|   o .   +       |
+|  o + o + .      |
+| . = O + o       |
+|  + % O S .      |
+| . X @ B   o     |
+|  * B O + . .    |
+|   = * = . .     |
+|      =   .      |
++----[SHA256]-----+
